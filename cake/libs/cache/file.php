@@ -41,7 +41,7 @@ class FileEngine extends CacheEngine {
 
 /**
  * Settings
- * 
+ *
  * - path = absolute path to cache directory, default => CACHE
  * - prefix = string prefix for filename, default => cake_
  * - lock = enable file locking on write, default => false
@@ -80,7 +80,7 @@ class FileEngine extends CacheEngine {
 			$settings
 		));
 		if (!isset($this->_File)) {
-			$this->_File =& new File($this->settings['path'] . DS . 'cake');
+			$this->_File = new File($this->settings['path'] . DS . 'cake');
 		}
 
 		if (DIRECTORY_SEPARATOR === '\\') {

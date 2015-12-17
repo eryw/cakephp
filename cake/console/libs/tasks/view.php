@@ -284,7 +284,7 @@ class ViewTask extends BakeTask {
 			$this->_stop();
 		}
 		$controllerClassName = $this->controllerName . 'Controller';
-		$controllerObj =& new $controllerClassName();
+		$controllerObj = new $controllerClassName();
 		$controllerObj->plugin = $this->plugin;
 		$controllerObj->constructClasses();
 		$modelClass = $controllerObj->modelClass;
@@ -410,7 +410,7 @@ class ViewTask extends BakeTask {
 		}
 		if (!empty($this->template) && $action != $this->template) {
 			return $this->template;
-		} 
+		}
 		$template = $action;
 		$prefixes = Configure::read('Routing.prefixes');
 		foreach ((array)$prefixes as $prefix) {

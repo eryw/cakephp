@@ -180,7 +180,7 @@ class CakeSchema extends Object {
 		}
 
 		if (class_exists($class)) {
-			$Schema =& new $class($options);
+			$Schema = new $class($options);
 			return $Schema;
 		}
 		$false = false;
@@ -280,7 +280,7 @@ class CakeSchema extends Object {
 									if (in_array($withTable, $currentTables)) {
 										$key = array_search($withTable, $currentTables);
 										$noPrefixWith = $this->_noPrefixTable($prefix, $withTable);
-	
+
 										$tables[$noPrefixWith] = $this->__columns($Object->$class);
 										$tables[$noPrefixWith]['indexes'] = $db->index($Object->$class);
 										$tables[$noPrefixWith]['tableParameters'] = $db->readTableParameters($withTable);
@@ -309,9 +309,9 @@ class CakeSchema extends Object {
 				$systemTables = array(
 					'aros', 'acos', 'aros_acos', Configure::read('Session.table'), 'i18n'
 				);
-				
+
 				$fulltable = $db->fullTableName($Object, false);
-				
+
 				if (in_array($table, $systemTables)) {
 					$tables[$Object->table] = $this->__columns($Object);
 					$tables[$Object->table]['indexes'] = $db->index($Object);
@@ -384,7 +384,7 @@ class CakeSchema extends Object {
 		}
 		$out .= "}\n";
 
-		$File =& new File($path . DS . $file, true);
+		$File = new File($path . DS . $file, true);
 		$header = '$Id';
 		$content = "<?php \n/* {$name} schema generated on: " . date('Y-m-d H:i:s') . " : ". time() . "*/\n{$out}?>";
 		$content = $File->prepare($content);

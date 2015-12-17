@@ -146,12 +146,12 @@ class HttpSocket extends CakeSocket {
  * You can use a url string to set the url and use default configurations for
  * all other options:
  *
- * `$http =& new HttpSocket('http://cakephp.org/');`
+ * `$http = new HttpSocket('http://cakephp.org/');`
  *
  * Or use an array to configure multiple options:
  *
  * {{{
- * $http =& new HttpSocket(array(
+ * $http = new HttpSocket(array(
  *    'host' => 'cakephp.org',
  *    'timeout' => 20
  * ));
@@ -752,7 +752,7 @@ class HttpSocket extends CakeSocket {
  * - ?key[subKey]=value
  * - ?key[]=value1&key[]=value2
  *
- * A leading '?' mark in $query is optional and does not effect the outcome of this function. 
+ * A leading '?' mark in $query is optional and does not effect the outcome of this function.
  * For the complete capabilities of this implementation take a look at HttpSocketTest::testparseQuery()
  *
  * @param mixed $query A query string to parse into an array or an array to return directly "as is"

@@ -75,7 +75,7 @@ class XmlHelperTest extends CakeTestCase {
  * @return void
  */
 	function setUp() {
-		$this->Xml =& new XmlHelper();
+		$this->Xml = new XmlHelper();
 		$this->Xml->beforeRender();
 		$manager =& XmlManager::getInstance();
 		$manager->namespaces = array();
@@ -212,7 +212,7 @@ class XmlHelperTest extends CakeTestCase {
 		$result = $this->Xml->serialize($data, array('format' => 'tags'));
 		$expected = '<service_day><service_time><service_time_price><dollar>1</dollar><cents>2</cents></service_time_price></service_time></service_day>';
 		$this->assertIdentical($result, $expected);
-		
+
 		$data = array(
 			'Pages' => array('id' => 2, 'url' => 'http://www.url.com/rb/153/?id=bbbb&t=access')
 		);

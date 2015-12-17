@@ -69,7 +69,7 @@ class EmailTestComponent extends EmailComponent {
 /**
  * Allows mocks to be used with tests.
  *
- * @param array $config 
+ * @param array $config
  * @return void
  */
 	function _getSocket($config) {
@@ -243,7 +243,7 @@ class EmailComponentTest extends CakeTestCase {
 		$this->_appEncoding = Configure::read('App.encoding');
 		Configure::write('App.encoding', 'UTF-8');
 
-		$this->Controller =& new EmailTestController();
+		$this->Controller = new EmailTestController();
 
 		restore_error_handler();
 		@$this->Controller->Component->init($this->Controller);
@@ -384,7 +384,7 @@ TEMPDOC;
 			return;
 		}
 
-		$connection =& new CakeSocket(array('protocol'=>'smtp', 'host' => 'localhost', 'port' => 25));
+		$connection = new CakeSocket(array('protocol'=>'smtp', 'host' => 'localhost', 'port' => 25));
 		$this->Controller->EmailTest->setConnectionSocket($connection);
 		$this->Controller->EmailTest->smtpOptions['timeout'] = 10;
 		$this->assertTrue($connection->connect());
@@ -449,7 +449,7 @@ TEMPDOC;
 		$this->Controller->EmailTest->_debug = true;
 		$this->Controller->EmailTest->sendAs = 'text';
 		$this->Controller->EmailTest->delivery = 'smtp';
-		
+
 		$socket = new MockEmailSocket();
 		$socket->setReturnValue('connect', true);
 		$this->Controller->EmailTest->setConnectionSocket($socket);
@@ -461,7 +461,7 @@ TEMPDOC;
 		$this->assertPattern('/RCPT TO: <postmaster@localhost>\n/', $this->Controller->EmailTest->smtpSend);
 		$this->assertPattern('/RCPT TO: <root@localhost>\n/', $this->Controller->EmailTest->smtpSend);
 		$this->assertPattern(
-			'/To: postmaster@localhost, root@localhost[\n\r]/', 
+			'/To: postmaster@localhost, root@localhost[\n\r]/',
 			$this->Controller->EmailTest->smtpSend
 		);
 	}
@@ -741,7 +741,7 @@ HTMLBLOC;
 		}
 
 		$this->Controller->EmailTest->smtpOptions['timeout'] = 10;
-		$socket =& new CakeSocket(array_merge(array('protocol'=>'smtp'), $this->Controller->EmailTest->smtpOptions));
+		$socket = new CakeSocket(array_merge(array('protocol'=>'smtp'), $this->Controller->EmailTest->smtpOptions));
 		$this->Controller->EmailTest->setConnectionSocket($socket);
 
 		$this->assertTrue($this->Controller->EmailTest->getConnectionSocket());
@@ -1300,7 +1300,7 @@ HTMLBLOC;
 
 		$result = $this->Controller->EmailTest->formatAddress('alias <email@example.com>');
 		$this->assertEqual($result, 'alias <email@example.com>');
-		
+
 		$result = $this->Controller->EmailTest->formatAddress('alias<email@example.com>');
 		$this->assertEqual($result, 'alias <email@example.com>');
 
@@ -1329,7 +1329,7 @@ HTMLBLOC;
 		$this->Controller->EmailTest->charset = 'UTF-8';
 		$result = $this->Controller->EmailTest->formatAddress('ÄÖÜTest <email@domain.de>');
 		$this->assertEqual($result, '=?UTF-8?B?w4TDlsOcVGVzdA==?= <email@domain.de>');
-		
+
 		$result = $this->Controller->EmailTest->formatAddress('ÄÖÜTest<email@domain.de>');
 		$this->assertEqual($result, '=?UTF-8?B?w4TDlsOcVGVzdA==?= <email@domain.de>');
 

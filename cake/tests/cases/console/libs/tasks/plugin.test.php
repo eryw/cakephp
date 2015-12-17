@@ -61,9 +61,9 @@ class PluginTaskTest extends CakeTestCase {
  * @access public
  */
 	function startTest() {
-		$this->Dispatcher =& new TestPluginTaskMockShellDispatcher();
+		$this->Dispatcher = new TestPluginTaskMockShellDispatcher();
 		$this->Dispatcher->shellPaths = App::path('shells');
-		$this->Task =& new MockPluginTask($this->Dispatcher);
+		$this->Task = new MockPluginTask($this->Dispatcher);
 		$this->Task->Dispatch =& $this->Dispatcher;
 		$this->Task->path = TMP . 'tests' . DS;
 	}
@@ -171,7 +171,7 @@ class PluginTaskTest extends CakeTestCase {
 		$this->assertTrue(file_exists($path . DS . 'tests' . DS . 'fixtures' . DS . 'empty'), 'No empty file %s');
 
 		$this->assertTrue(is_dir($path . DS . 'vendors'), 'No vendors dir %s');
-	
+
 		$this->assertTrue(is_dir($path . DS . 'vendors' . DS . 'shells'), 'No vendors shells dir %s');
 		$this->assertTrue(is_dir($path . DS . 'vendors' . DS . 'shells' . DS . 'tasks'), 'No vendors shells tasks dir %s');
 		$this->assertTrue(file_exists($path . DS . 'vendors' . DS . 'shells' . DS . 'tasks' . DS . 'empty'), 'No empty file %s');
@@ -184,7 +184,7 @@ class PluginTaskTest extends CakeTestCase {
 		$file = $path . DS . 'bake_test_plugin_app_model.php';
 		$this->Task->expectAt(1, 'createFile', array($file, '*'), 'No AppModel %s');
 
-		$Folder =& new Folder($this->Task->path . 'bake_test_plugin');
+		$Folder = new Folder($this->Task->path . 'bake_test_plugin');
 		$Folder->delete();
 	}
 
@@ -210,7 +210,7 @@ class PluginTaskTest extends CakeTestCase {
 		$this->Task->args = array();
 		$this->Task->execute();
 
-		$Folder =& new Folder($path);
+		$Folder = new Folder($path);
 		$Folder->delete();
 	}
 
@@ -235,7 +235,7 @@ class PluginTaskTest extends CakeTestCase {
 
 		$this->Task->execute();
 
-		$Folder =& new Folder($this->Task->path . 'bake_test_plugin');
+		$Folder = new Folder($this->Task->path . 'bake_test_plugin');
 		$Folder->delete();
 	}
 
@@ -246,11 +246,11 @@ class PluginTaskTest extends CakeTestCase {
  * @access public
  */
 	function testExecuteWithTwoArgs() {
-		$this->Task->Model =& new PluginTestMockModelTask();
+		$this->Task->Model = new PluginTestMockModelTask();
 		$this->Task->setReturnValueAt(0, 'in', $this->_testPath);
 		$this->Task->setReturnValueAt(1, 'in', 'y');
 
-		$Folder =& new Folder($this->Task->path . 'bake_test_plugin', true);
+		$Folder = new Folder($this->Task->path . 'bake_test_plugin', true);
 
 		$this->Task->Dispatch->args = array('BakeTestPlugin', 'model');
 		$this->Task->args =& $this->Task->Dispatch->args;
